@@ -1,0 +1,45 @@
+sudo fdisk /dev/nvme1n1
+
+n
+p
+enter
+enter 
+enter 
+w
+
+sudo partprobe
+
+sudo mkfs.xfs /dev/nvme1n1p1
+
+sudo mkdir /mnt/archana
+
+sudo mount /dev/nvme1n1p1 /mnt/archana
+
+df -h
+
+sudo blkid /dev/nvme1n1p1
+UUID="f1e294e6-7657-4761-bba5-bb2d0eab3936" like this you get 
+
+sudo nano /etc/fstab
+ADD: UUID=f1e294e6-7657-4761-bba5-bb2d0eab3936 /mnt/archana xfs defaults,nofail 0 0
+
+sudo mount -a
+
+cd /mnt/archana
+sudo touch f1
+ls
+
+sudo reboot
+
+df -h
+
+Volumes → Actions → Detach Volume
+Mount new instance 
+
+lsblk
+
+sudo mkdir /mnt/archana
+
+sudo mount /dev/nvme1n1p1 /mnt/archana
+
+ls /mnt/archana
